@@ -1,0 +1,4 @@
+Operational Efficiency:
+    - Increase inventory levels before peak months: October 2024, November 2024, July 2024
+    - Implement automated reordering for top 20% selling products
+    - Consider bulk purchasing discounts during off-peak periods

@@ -1,0 +1,4 @@
+Customer Retention:
+    - 2264 businesses have reduced activity in past 3 months
+    - Implement win-back campaign with targeted discounts on their most purchased items
+    - Set up early warning system to flag declining purchase patterns
