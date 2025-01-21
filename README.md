@@ -159,7 +159,11 @@ Predictive Analysis: Incorporate external factors such as economic conditions us
 
 ![sale_trends_over_time](/screenshots/sales_trends_over_time.png)![sale_trends_over_time_plotly](/screenshots/sales_trends_over_time_plotly.png)
 ![total_value_by_category](/screenshots/total_value_by_category.png)![total_value_by_category_plotly](/screenshots/total_value_by_category_plotly.png)
-![passing_pytests](/screenshots/tests_passing.png)  
+![passing_pytests](/screenshots/tests_passing.png)
+
+## PR Request:
+
+> Initiate a PR reequest to Evans Biwott on this private repo.
 
 
 ## ✨ Author
