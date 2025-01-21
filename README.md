@@ -45,8 +45,8 @@
 
 ### 1. Clone the Repository
 ```bash
-    git clone https://github.com/your-username/kwanza-tukule-analysis.git
-    cd kwanza-tukule-analysis
+    git clone https://github.com/kwanza_tukule_case_study_assessment.git
+    cd kwanza_tukule_case_study_assessment
 ```
 
 ### 2. Set Up a Virtual Environment
