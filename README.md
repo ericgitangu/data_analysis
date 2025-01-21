@@ -159,11 +159,11 @@ Predictive Analysis: Incorporate external factors such as economic conditions us
 
 ![sale_trends_over_time](/screenshots/sales_trends_over_time.png)![sale_trends_over_time_plotly](/screenshots/sales_trends_over_time_plotly.png)
 ![total_value_by_category](/screenshots/total_value_by_category.png)![total_value_by_category_plotly](/screenshots/total_value_by_category_plotly.png)
-![passing_pytests](/screenshots/tests_passing.png)
+![passing_pytests](/screenshots/tests_passing.png)![terminal_console-outputs](/screenshots/terminal_console_output.png)
 
-## PR Request:
+## PR Request and note:
 
-> Initiate a PR reequest to Evans Biwott on this private repo.
+> Initiate a PR reequest to Evans Biwott on this private repo. Along with the console output as seen in the screenshot there are also output files in the strategic_insights_recommendations/ folder and the bonus_questions/ folder along with the browser rendering via plotly which address the assessment questions and also some are extra work particularly the **/strategic_insights_recommendations/insights_overview.txt** file. Thanks for taking your time to go througn my work!
 
 
 ## ✨ Author

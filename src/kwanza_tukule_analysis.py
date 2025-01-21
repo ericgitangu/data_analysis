@@ -16,6 +16,7 @@ class KwanzaTukuleAnalysis:
         cleaned_data (pd.DataFrame): Cleaned dataset after removing duplicates and handling missing values.
         monthly_data (pd.DataFrame): Aggregated dataset for monthly trends.
         stats_highlights (dict): Dictionary to store key statistics.
+        stats_highlights (dict): Dictionary to store key statistics.
     """
 
     def __init__(self, file_path, sheet_name):
@@ -255,6 +256,10 @@ class KwanzaTukuleAnalysis:
             'UNIT PRICE': 'sum',
             'QUANTITY': 'sum'
         }).sort_values('UNIT PRICE', ascending=False).index[0]
+
+        # Write initial message to file
+        with open('strategic_insights_recommendations/insights_overview.txt', 'a') as f:
+            f.write(f"Top Category: {top_category}\n with highest revenue potential based on historical sales data\n")
         
         # Write product strategy recommendations to file
         os.makedirs('strategic_insights_recommendations', exist_ok=True)
