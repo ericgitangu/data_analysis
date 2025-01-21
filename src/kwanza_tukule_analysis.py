@@ -15,6 +15,7 @@ class KwanzaTukuleAnalysis:
         data (pd.DataFrame): Raw dataset loaded from the file.
         cleaned_data (pd.DataFrame): Cleaned dataset after removing duplicates and handling missing values.
         monthly_data (pd.DataFrame): Aggregated dataset for monthly trends.
+        stats_highlights (dict): Dictionary to store key statistics.
     """
 
     def __init__(self, file_path, sheet_name):
@@ -30,6 +31,7 @@ class KwanzaTukuleAnalysis:
         self.data = None
         self.cleaned_data = None
         self.monthly_data = None
+        self.stats_highlights = {}
 
     # Section 1: Data Cleaning and Preparation (20 points)
     def load_data(self):
@@ -141,6 +143,11 @@ class KwanzaTukuleAnalysis:
 
         print(colored("Sales overview completed! ✅", "green"))
 
+        # Store key statistics
+        self.stats_highlights['top_category'] = category_sales.nlargest(1, 'UNIT PRICE')['ANONYMIZED CATEGORY'].iloc[0]
+        self.stats_highlights['top_category_value'] = category_sales.nlargest(1, 'UNIT PRICE')['UNIT PRICE'].iloc[0]
+        self.stats_highlights['total_sales_value'] = category_sales['UNIT PRICE'].sum()
+        
         return category_sales, business_sales
 
     def trends_over_time(self):
@@ -170,6 +177,11 @@ class KwanzaTukuleAnalysis:
 
         print(colored("Trends over time completed! ✅", "green"))
 
+        # Store key statistics
+        self.stats_highlights['peak_month'] = self.monthly_data.nlargest(1, 'UNIT PRICE')['Month-Year'].iloc[0]
+        self.stats_highlights['peak_month_value'] = self.monthly_data.nlargest(1, 'UNIT PRICE')['UNIT PRICE'].iloc[0]
+        self.stats_highlights['avg_monthly_value'] = self.monthly_data['UNIT PRICE'].mean()
+        
         return self.monthly_data
 
     # Section 3: Advanced Analysis (30 points)
@@ -195,6 +207,12 @@ class KwanzaTukuleAnalysis:
         print(colored("Customer Segmentation Completed:", "green"))
         print(segmentation.head())
 
+        # Store key statistics
+        self.stats_highlights['high_value_customers'] = len(segmentation[segmentation['Segment'] == 'High Value'])
+        self.stats_highlights['avg_customer_value'] = segmentation['Total_Value'].mean()
+        self.stats_highlights['top_customer'] = segmentation.nlargest(1, 'Total_Value')['ANONYMIZED BUSINESS'].iloc[0]
+        self.stats_highlights['top_customer_value'] = segmentation.nlargest(1, 'Total_Value')['Total_Value'].iloc[0]
+        
         return segmentation
 
     # Section 4: Strategic Insights and Recommendations (20 points)
@@ -206,15 +224,31 @@ class KwanzaTukuleAnalysis:
             Key recommendations for product strategy, customer retention, and operational efficiency.
         """
         print(colored("Generating Strategic Insights and Recommendations...", "blue"))
-        
-        # Create directory if it doesn't exist
+    
         os.makedirs('strategic_insights_recommendations', exist_ok=True)
         
-        # Write initial message to file
+        # Insights overview with comprehensive statistics
         with open('strategic_insights_recommendations/insights_overview.txt', 'w') as f:
             f.write("Strategic Insights and Recommendations\n")
             f.write("=====================================\n\n")
-            f.write("Generated insights and recommendations based on data analysis\n")
+            f.write("Key Performance Metrics:\n")
+            f.write(f"1. Sales Performance:\n")
+            f.write(f"   - Total Sales Value: ${self.stats_highlights.get('total_sales_value', 0):,.2f}\n")
+            f.write(f"   - Top Performing Category: {self.stats_highlights.get('top_category', 'N/A')}\n")
+            f.write(f"   - Top Category Value: ${self.stats_highlights.get('top_category_value', 0):,.2f}\n\n")
+            
+            f.write(f"2. Temporal Analysis:\n")
+            f.write(f"   - Peak Sales Month: {self.stats_highlights.get('peak_month', 'N/A')}\n")
+            f.write(f"   - Peak Month Value: ${self.stats_highlights.get('peak_month_value', 0):,.2f}\n")
+            f.write(f"   - Average Monthly Sales: ${self.stats_highlights.get('avg_monthly_value', 0):,.2f}\n\n")
+            
+            f.write(f"3. Customer Insights:\n")
+            f.write(f"   - Number of High-Value Customers: {self.stats_highlights.get('high_value_customers', 0)}\n")
+            f.write(f"   - Average Customer Value: ${self.stats_highlights.get('avg_customer_value', 0):,.2f}\n")
+            f.write(f"   - Top Customer: {self.stats_highlights.get('top_customer', 'N/A')}\n")
+            f.write(f"   - Top Customer Value: ${self.stats_highlights.get('top_customer_value', 0):,.2f}\n")
+            f.write(f"   - Top Category: {self.stats_highlights.get('top_category', 'N/A')} with highest revenue potential based on historical sales data\n\n")
+            f.write("=====================================\n")
         
         # Product Strategy
         top_category = self.cleaned_data.groupby('ANONYMIZED CATEGORY').agg({
