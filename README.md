@@ -50,6 +50,8 @@
 ```
 
 ### 2. Set Up a Virtual Environment
+
+Require Python 3.9+ (Tested on 3.13)
 ```bash
     python3 -m venv venv
     source venv/bin/activate
