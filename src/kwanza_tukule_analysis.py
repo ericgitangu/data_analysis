@@ -16,6 +16,7 @@ class KwanzaTukuleAnalysis:
         cleaned_data (pd.DataFrame): Cleaned dataset after removing duplicates and handling missing values.
         monthly_data (pd.DataFrame): Aggregated dataset for monthly trends.
         stats_highlights (dict): Dictionary to store key statistics.
+        stats_highlights (dict): Dictionary to store key statistics.
     """
 
     def __init__(self, file_path, sheet_name):
